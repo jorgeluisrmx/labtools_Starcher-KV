@@ -1,0 +1,125 @@
+#:kivy 1.7.2
+
+CalcDosifForm:
+
+<ResPopup>:
+	title: 'Dosificación'
+	auto_dismiss: False
+	size_hint: (0.9,0.95)
+	
+	content: popupcontent
+	
+	BoxLayout:
+		id: popupcontent
+		orientation: 'vertical'
+		
+		Label:
+		    size_hint_y: 1
+		    text: root.dosif
+			
+		Button:
+			size_hint_y: None
+			height: '48dp'
+			text: 'OK'
+			on_press: root.dismiss()
+
+<CalcDosifForm>
+    orientation: 'vertical'
+    padding: '16dp'
+    
+    dc: d_c
+    da: d_a
+    pVc: p_Vc
+    pWa: p_Wa
+    tv: t_v
+    dh: d_h
+    
+    Label:
+        size_hint_y: None
+        height: '34dp'
+        text: 'Densidad comp. primario (cp: g/cm3):'
+    
+    TextInput:
+        id: d_c
+        size_hint_y: None
+        height: '34dp'
+        hint_text: 'gramos sobre centimetro cubico'
+        text: '3.2013'
+        multiline: False
+        focus: True
+    
+    Label:
+        size_hint_y: None
+        height: '34dp'
+        text: 'Densidad almidón (a: g/cm3):'
+    
+    TextInput:
+        id: d_a
+        size_hint_y: None
+        height: '34dp'
+        hint_text: 'gramos sobre centimetro cubico'
+        text: '1.4471'
+        multiline: False
+    
+    Label:
+        size_hint_y: None
+        height: '34dp'
+        text: '%V de compuesto principal:'
+    
+    TextInput:
+        id: p_Vc
+        size_hint_y: None
+        height: '34dp'
+        hint_text: '% en volumen: 55 es 55%'
+        text: '55'
+        multiline: False
+    
+    Label:
+        size_hint_y: None
+        height: '34dp'
+        text: '%w de almidón:'
+    
+    TextInput:
+        id: p_Wa
+        size_hint_y: None
+        height: '34dp'
+        hint_text: '% en peso: 2 es 2%'
+        text: '2'
+        multiline: False
+    
+    Label:
+        size_hint_y: None
+        height: '34dp'
+        text: 'Volumen total de la mezcla (Vt: ml):'
+    
+    TextInput:
+        id: t_v
+        size_hint_y: None
+        height: '34dp'
+        hint_text: 'mililitros'
+        text: '60'
+        multiline: False
+    
+    Label:
+        size_hint_y: None
+        height: '34dp'
+        text: 'Densidad del agua (h: g/cm3):'
+    
+    TextInput:
+        id: d_h
+        size_hint_y: None
+        height: '34dp'
+        hint_text: 'mililitros'
+        text: '1.0'
+        multiline: False
+    
+    Label:
+        id: separator
+        size_hint_y: None
+        height: '16dp'
+    
+    Button:
+        #size_hint_y: None
+        #height: '48dp'
+        text: 'Generar dosificación'
+        on_press: root.calcular()
